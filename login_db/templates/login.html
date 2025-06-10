@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <nav class="bg-white shadow-md fixed w-full top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between h-16 items-center">
+        <h1 class="text-2xl font-bold text-gray-800">Logo</h1>
+        <div class="space-x-4">
+          <a href="/login" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Login</a>
+          <a href="/register" class="text-gray-600 hover:text-gray-900">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="min-h-screen flex items-center justify-center pt-16">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+      <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+      <form method="POST" action="/login">
+        <div class="mb-6">
+          <label for="email" class="block text-sm font-medium">Email</label>
+          <input type="email" id="email" name="email" required class="w-full mt-1 px-3 py-2 border rounded-md">
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block text-sm font-medium">Password</label>
+          <input type="password" id="password" name="password" required class="w-full mt-1 px-3 py-2 border rounded-md">
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Login</button>
+      </form>
+      <p class="mt-4 text-center text-sm text-gray-600"><a href="/forgot" class="text-blue-600 hover:underline">Forgot Password?</a></p>
+      <p class="mt-2 text-center text-sm text-gray-600">Don't have an account? <a href="/register" class="text-blue-600 hover:underline">Register</a></p>
+    </div>
+  </section>
+  <footer class="bg-white py-6 text-center">
+    <p class="text-gray-600">© 2025 Your Company. All rights reserved.</p>
+  </footer>
+  {% if message %}
+  <script>
+    alert("{{ message }}");
+  </script>
+  {% endif %}
+</body>
+</html>

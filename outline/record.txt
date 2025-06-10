@@ -1,0 +1,14 @@
+Installed several software via Chocolatey on May 25, 2025.
+
+
+If you want to automamte something make sure you know to do it manually.
+
+manual: Set-Ups/Tools
+Hypervisor: Oracle VM VirtualBox
+ISO File: CentOS and Ubuntu
+Login tool: Git Bash & Putty
+
+automamted: Set-Ups/Tools
+Hypervisor: Oracle VM VirtualBox
+Vagrant: CentOS vms with Vagrantfile
+commands: vagrant up
