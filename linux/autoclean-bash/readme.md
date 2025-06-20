@@ -2,7 +2,7 @@
 
 **autoclean-bash** is a DevOps automation script written in Bash. It safely handles routine system maintenance tasks like backing up logs, archiving temporary files, and moving trash files — all with safety checks and timestamped logging. Designed to simulate real-world DevOps cleanup jobs.
 
-## 📂 Project Structure
+## 📂 Project Structure (in VM or Ubuntu)
 ```
 autoclean-bash/
 ├── maintain.sh
