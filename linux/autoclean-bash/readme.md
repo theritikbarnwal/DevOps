@@ -3,11 +3,8 @@
 
 **autoclean-bash** is a DevOps automation script written in Bash. It safely handles routine system maintenance tasks like backing up logs, archiving temporary files, and moving trash files — all with safety checks and timestamped logging. Designed to simulate real-world DevOps cleanup jobs.
 
----
-
 ## 📂 Project Structure
 
-```
 autoclean-bash/
 ├── maintain.sh
 ├── logs/
@@ -17,7 +14,10 @@ autoclean-bash/
 ├── logfile.txt
 ├── tempfile.txt
 ├── trashfile.txt
-```
+
+
+---
+
 
 ---
 
@@ -25,21 +25,17 @@ autoclean-bash/
 
 ### ✔️ Successful Run
 
-```
 RDCT 📍 Running DevOps Cleanup Task
 ✅ logfile.txt backed up.
 📦 tempfile.txt archived.
 🗑️  trashfile.txt moved to trash.
-```
 
 ### ⚠️ Partial Run (Missing Files)
 
-```
 RDCT 📍 Running DevOps Cleanup Task
 ✅ logfile.txt backed up.
 ⚠️  tempfile.txt not found!
 ⚠️  trashfile.txt not found!
-```
 
 ---
 
@@ -93,22 +89,7 @@ It reflects tasks that system administrators automate with cron jobs or integrat
 
 ---
 
-## 📜 License
-
-This project is licensed under the **MIT License**.
-You are free to use, modify, and distribute it for personal or professional purposes.
-
----
-
 ## 👨‍💻 Author
 
 **Ritik Barnwal**
 [GitHub](https://github.com/theritikbarnwal) • [LinkedIn](https://linkedin.com/in/ritikbarnwal)
-```
-
-### Notes
-- The file above is a complete `README.md` that includes the description and project structure from the image, merged with the detailed content you provided earlier.
-- If the issue is with viewing it properly (e.g., truncation in your editor or platform), try copying this text into a new file named `README.md` and opening it in a Markdown viewer (e.g., VS Code, GitHub, or a text editor with Markdown support).
-- If you meant something different by "get me in one file this is not coming properly" (e.g., combining the project files into a single script or zip), please clarify, and I’ll adjust accordingly!
-
-Let me know if you need further assistance!
