@@ -16,54 +16,18 @@ Here's your **complete and properly formatted `README.md`** for your project **`
 ```
 
 autoclean-bash/
-├── archive/              # Archived temp files
-├── logs/                 # Timestamped log backups & execution log
-├── trash/                # Trash directory for moved files
-├── logfile.txt           # Log file to back up
-├── tempfile.txt          # Temporary file to archive
-├── trashfile.txt         # File to move to trash
-├── samplefile.txt        # Sample/extra file (not used)
-├── maintain.sh           # Main cleanup script
-└── README.md             # Project documentation
+├── maintain.sh
+├── logs/
+├── archive/
+├── trash/
+├── samplefile.txt
+├── logfile.txt
+├── tempfile.txt
+├── trashfile.txt
+
 
 ````
 
----
-
-## 🧪 Script: `maintain.sh`
-
-```bash
-#!/bin/bash
-
-echo "RDCT 📍 Running DevOps Cleanup Task"
-
-# 1. Backup log file
-if [ -f logfile.txt ]; then
-  cp logfile.txt logs/logfile_$(date +%F_%H-%M-%S).txt
-  echo "✅ logfile.txt backed up."
-else
-  echo "⚠️  logfile.txt not found!"
-fi
-
-# 2. Archive temp files
-if [ -f tempfile.txt ]; then
-  mv tempfile.txt archive/tempfile_$(date +%F).txt
-  echo "📦 tempfile.txt archived."
-else
-  echo "⚠️  tempfile.txt not found!"
-fi
-
-# 3. Move trash file
-if [ -f trashfile.txt ]; then
-  mv trashfile.txt trash/
-  echo "🗑️  trashfile.txt moved to trash."
-else
-  echo "⚠️  trashfile.txt not found!"
-fi
-
-# 4. Logging the operation
-echo "$(date): Maintenance Script executed." >> logs/maintenance.log
-````
 
 ---
 
