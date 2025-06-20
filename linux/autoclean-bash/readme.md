@@ -1,4 +1,3 @@
-```
 # 🧹 autoclean-bash
 
 **autoclean-bash** is a DevOps automation script written in Bash. It safely handles routine system maintenance tasks like backing up logs, archiving temporary files, and moving trash files — all with safety checks and timestamped logging. Designed to simulate real-world DevOps cleanup jobs.
@@ -15,27 +14,27 @@ autoclean-bash/
 ├── tempfile.txt
 ├── trashfile.txt
 
-
----
-
-
 ---
 
 ## ✅ Sample Script Output
 
 ### ✔️ Successful Run
 
+```
 RDCT 📍 Running DevOps Cleanup Task
 ✅ logfile.txt backed up.
 📦 tempfile.txt archived.
 🗑️  trashfile.txt moved to trash.
+```
 
 ### ⚠️ Partial Run (Missing Files)
 
+```
 RDCT 📍 Running DevOps Cleanup Task
 ✅ logfile.txt backed up.
 ⚠️  tempfile.txt not found!
 ⚠️  trashfile.txt not found!
+```
 
 ---
 
@@ -86,10 +85,3 @@ It reflects tasks that system administrators automate with cron jobs or integrat
 * 🔄 Delete old backups (e.g., older than 7 days)
 * 📬 Send alert (email or webhook) on script failure
 * 🧩 Turn into a modular Bash utility with flags (`--backup-only`, etc.)
-
----
-
-## 👨‍💻 Author
-
-**Ritik Barnwal**
-[GitHub](https://github.com/theritikbarnwal) • [LinkedIn](https://linkedin.com/in/ritikbarnwal)
