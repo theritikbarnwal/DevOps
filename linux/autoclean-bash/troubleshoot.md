@@ -1,4 +1,4 @@
-Certainly! Here's the **GitHub-flavored `README.md`** section formatted **in Markdown** so you can directly append it to your existing `README.md` file:
+
 
 ---
 
@@ -45,15 +45,3 @@ mv "$BASEDIR/tempfile.txt" "$BASEDIR/archive/tempfile_$(date +%F).txt"
 Now the script works correctly in **any environment**, including cron, systemd, or CI pipelines.
 
 ---
-
-### 🧠 Pro Tip:
-
-> Always use absolute paths in scripts that run via cron or background services to avoid unexpected directory-related errors.
-
-```
-
----
-
-You can copy and paste this **as-is** into the bottom of your `README.md`.  
-Let me know if you want this in a collapsible `<details>` format or as a separate troubleshooting `.md` page.
-```
