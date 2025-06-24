@@ -1,13 +1,8 @@
-Here's a professional, complete `README.md` tailored for your `autoclean-bash` script. It explains what it does, what you learned, and the challenges faced — perfect for your `linux/` folder on GitHub:
-
----
-
-````markdown
 # 🧼 autoclean-bash – Temp File Cleaner for Windows via WSL
 
 ## 📌 Overview
 
-`autoclean-bash` is a real-world Bash automation script I developed to clean up temporary files from a **Windows environment** using **Linux (Bash via WSL)**. It targets:
+`autoclean-bash` is a real-world Bash script I developed to clean up temporary files from a **Windows environment** using **Linux (Bash via WSL)**. It targets:
 
 - `C:\Windows\Temp`
 - `C:\Users\<User>\AppData\Local\Temp`
@@ -71,10 +66,9 @@ Each log file includes timestamps, file actions, and errors (if any).
 
 ```
 linux/
-├── autoclean-bash             ← Main script
-├── sample-log/                ← Example logs (optional)
-│   └── cleanup_2025-06-24_17-30-22.log
-└── README.md                  ← (This file)
+├── autoclean-bash            
+    ├── clean_win_temp.sh         
+    └── win_temp.md
 ```
 
 ---
@@ -97,32 +91,4 @@ chmod +x autoclean-bash
 
 ```bash
 cat /mnt/c/autoclean/logs/cleanup_<timestamp>.log
-```
-
----
-
-## 🧩 Next Steps
-
-* [ ] Add dry-run mode (`--dry-run`) to preview actions
-* [ ] Accept custom directories via arguments
-* [ ] Add cron job integration (if run in Linux regularly)
-* [ ] Integrate email/log reporting
-
----
-
-## 🔗 Reference
-
-* [WSL Docs – Microsoft](https://learn.microsoft.com/en-us/windows/wsl/)
-* [Bash Scripting Guide](https://tldp.org/LDP/abs/html/)
-
----
-
-> **Author**: Ritik Barnwal
-> **Repo**: [theritikbarnwal/DevOps](https://github.com/theritikbarnwal/DevOps)
-
-```
-
----
-
-Would you also like me to create a `sample-log/` file with example output and errors for better GitHub presentation?
 ```
