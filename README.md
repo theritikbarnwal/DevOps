@@ -1,4 +1,4 @@
-# ⚙️ DevOps by Ritik Barnwal
+# ⚙️ DevOps
 
 > **Learning by doing. Building real. Documenting everything.**
 
@@ -45,5 +45,3 @@ Next up:
 
 🛠️ Built entirely in **public** to learn better, faster, and together.  
 Open to collaborations, corrections, and conversations.
-
-#DevOps #Docker #Linux #Bash #Automation #LearningInPublic #OpenSource #InfrastructureAsCode
