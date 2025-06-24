@@ -1,4 +1,4 @@
-# 🧼 autoclean-bash – Temp File Cleaner for Windows via WSL
+# 🧼 clean-bash – Temp File Cleaner for Windows via WSL
 
 ## 📌 Overview
 
