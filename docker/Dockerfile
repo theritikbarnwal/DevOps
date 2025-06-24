@@ -9,3 +9,5 @@ COPY hello.py .
 
 # Set the default command to run your script
 CMD ["python", "hello.py"]
+
+
