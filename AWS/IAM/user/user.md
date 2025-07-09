@@ -1,6 +1,3 @@
-Here is your finalized `README.md` for GitHub, documenting your **first AWS IAM user setup** with the updated screenshot (`user_ritik.png`).
-
----
 
 ### ✅ Final `README.md` (Markdown file for GitHub)
 
@@ -71,51 +68,3 @@ aws iam list-users
 Below is the screenshot from the IAM console showing the user configuration and permission setup:
 
 ![IAM user setup](user_ritik.png)
-
----
-
-## 📌 Next Steps
-
-* 🔒 Enable Multi-Factor Authentication (MFA)
-* ✅ Explore IAM Groups and Role-based access
-* 🔄 Practice attaching least-privilege policies
-* 🚀 Start using services like S3, EC2, and IAM automation
-
----
-
-## 🔗 References
-
-* [AWS IAM Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
-* [AWS CLI Official Guide](https://docs.aws.amazon.com/cli/latest/userguide/)
-* [Security Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
-
----
-
-## 🛠️ Author
-
-**Ritik Barnwal**
-Aspiring DevOps & Cloud Engineer
-[GitHub: @theritikbarnwal](https://github.com/theritikbarnwal)
-
-```
-
----
-
-### 🧱 Repo Structure Suggestion:
-
-```
-
-aws-iam-user-setup/
-│
-├── README.md
-└── user\_ritik.png
-
-```
-
-You can now:
-1. Create a new GitHub repo.
-2. Upload this `README.md` and your `user_ritik.png` file.
-3. Push it as your **first documented cloud/DevOps activity**. ✅
-
-Let me know if you want the `git init` + push commands too.
-```
