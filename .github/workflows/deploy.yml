@@ -50,3 +50,5 @@ jobs:
           else
             echo "⚠️ App not running under systemd. Start it manually or set up a systemd service."
           fi
+
+          
