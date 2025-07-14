@@ -30,25 +30,6 @@ This is a simple, secure **Flask-based user authentication system** hosted on an
 
 ---
 
-## 📦 Project Structure
-
-```
-
-project-root/
-├── app.py                  # Main Flask app
-├── templates/
-│   ├── login.html
-│   ├── register.html
-│   └── dashboard.html
-├── static/
-│   └── (optional assets)
-├── requirements.txt
-└── .env                   # MongoDB URI, Secret Key
-
-````
-
----
-
 ## 📂 How to Deploy on EC2
 
 ### 1. Launch EC2 (Amazon Linux 2)
