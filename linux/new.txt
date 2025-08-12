@@ -1,0 +1,45 @@
+linuxops-toolkit/
+│
+├── 01_file_system/
+│   ├── navigation.md
+│   └── practice.sh
+│
+├── 02_users_permissions/
+│   ├── users_groups.md
+│   └── permissions.sh
+│
+├── 03_package_management/
+│   ├── apt_yum.md
+│   └── install_nginx.sh
+│
+├── 04_processes_services/
+│   ├── processes.md
+│   └── nginx_service_check.sh
+│
+├── 05_networking/
+│   ├── network_tools.md
+│   └── server_connectivity_check.sh
+│
+├── 06_scripting_basics/
+│   ├── loops_conditions.sh
+│   └── argument_parser.sh
+│
+├── 07_monitoring_logs/
+│   ├── disk_health_check.sh
+│   ├── memory_monitor.sh
+│   └── log_parser.sh
+│
+├── 08_cron_jobs/
+│   ├── cleanup_cron.sh
+│   └── crontab_setup.md
+│
+└── README.md
+
+
+
+#linux for devops- trainwithshubham
+https://www.trainwithshubham.com/s/courses/631c22b4e4b0e8df7038a61b/take?freecourseenrol=success
+
+
+#notes- gitlab
+https://gitlab.com/SatishSutar/devops-notes

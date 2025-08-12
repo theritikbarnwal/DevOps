@@ -1,0 +1,270 @@
+```python
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from pymongo import MongoClient
+from werkzeug.security import generate_password_hash, check_password_hash
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Replace with a secure key in production
+
+# MongoDB setup
+mongo_uri = "mongodb+srv://theritikbarnwal:*****@cluster0.svoba6v.mongodb.net/testdb?retryWrites=true&w=majority"
+client = MongoClient(mongo_uri)
+db = client['testdb']
+users_collection = db['users']
+
+@app.route('/')
+def landing():
+    return redirect(url_for('login'))  # Redirect to login for simplicity
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        user = users_collection.find_one({"email": email})
+        if user and check_password_hash(user['password'], password):
+            session['user'] = email
+            flash("Login successful!", "success")
+            return redirect(url_for('welcome'))
+        else:
+            flash("Invalid email or password", "error")
+    return render_template('login.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        existing_user = users_collection.find_one({"email": email})
+        if existing_user:
+            flash("Email already registered. Please log in.", "error")
+            return redirect(url_for('login'))
+        hashed_password = generate_password_hash(password, method='sha256')
+        users_collection.insert_one({
+            "name": name,
+            "email": email,
+            "password": hashed_password
+        })
+        flash("Registration successful! Please log in.", "success")
+        return redirect(url_for('login'))
+    return render_template('register.html')
+
+@app.route('/welcome')
+def welcome():
+    if 'user' not in session:
+        flash("Please log in to access this page.", "error")
+        return redirect(url_for('login'))
+    return render_template('welcome.html')
+
+@app.route('/dashboard')
+def dashboard():
+    if 'user' not in session:
+        flash("Please log in to access this page.", "error")
+        return redirect(url_for('login'))
+    return render_template('dashboard.html')
+
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        user = users_collection.find_one({"email": email})
+        if user:
+            session['reset_email'] = email
+            flash("Password reset instructions would be sent to your email.", "success")
+            return redirect(url_for('reset_password'))  # Simplified for demo
+        else:
+            flash("Email not found.", "error")
+    return render_template('forgot-password.html')
+
+@app.route('/reset-password', methods=['GET', 'POST'])
+def reset_password():
+    if 'reset_email' not in session:
+        flash("Unauthorized access.", "error")
+        return redirect(url_for('forgot_password'))
+    if request.method == 'POST':
+        new_password = request.form.get('new_password')
+        hashed_password = generate_password_hash(new_password, method='sha256')
+        users_collection.update_one(
+            {'email': session['reset_email']},
+            {'$set': {'password': hashed_password}}
+        )
+        session.pop('reset_email', None)
+        flash("Password reset successful. Please login.", "success")
+        return redirect(url_for('login'))
+    return render_template('reset_password.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    session.pop('reset_email', None)
+    flash("Logged out successfully.", "success")
+    return redirect(url_for('login'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+
+
+
+
+
+
+
+
+
+
+```python
+from flask import Flask, request, render_template, url_for, redirect, session, flash
+from pymongo import MongoClient
+from werkzeug.security import generate_password_hash, check_password_hash
+from bson import ObjectId
+
+# Flask Setup
+app = Flask(__name__)
+app.secret_key = "supersecretkey"  # Replace with os.environ.get('SECRET_KEY') in production
+
+# MongoDB Setup
+mongo_username = "theritikbarnwal"
+mongo_password = "ritik11mongo"
+mongo_cluster = "cluster0.svoba6v.mongodb.net/"
+mongo_database = "testdb"
+mongo_collection = "users"
+
+uri = f"mongodb+srv://{mongo_username}:{mongo_password}@{mongo_cluster}{mongo_database}?retryWrites=true&w=majority"
+client = MongoClient(uri)
+db = client[mongo_database]
+users_collection = db[mongo_collection]
+
+# Routes
+@app.route('/')
+def landing():
+    return render_template('landing.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        if not name or not email or not password:
+            flash("All fields are required.", "error")
+            return redirect(url_for('register'))
+        try:
+            existing_user = users_collection.find_one({"email": email})
+            if existing_user:
+                flash("Email already registered. Please log in.", "error")
+                return redirect(url_for('login'))
+            hashed_password = generate_password_hash(password, method='sha256')
+            users_collection.insert_one({
+                "name": name,
+                "email": email,
+                "password": hashed_password
+            })
+            flash("Registration successful! Please log in.", "success")
+            return redirect(url_for('login'))
+        except Exception as e:
+            flash("An error occurred. Please try again.", "error")
+            return redirect(url_for('register'))
+    return render_template('register.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        if not email or not password:
+            flash("Email and password are required.", "error")
+            return redirect(url_for('login'))
+        try:
+            user = users_collection.find_one({"email": email})
+            if user and check_password_hash(user['password'], password):
+                session['user'] = email
+                session['user_id'] = str(user['_id'])
+                flash("Login successful!", "success")
+                return redirect(url_for('welcome'))
+            else:
+                flash("Invalid email or password.", "error")
+                return redirect(url_for('login'))
+        except Exception as e:
+            flash("An error occurred. Please try again.", "error")
+            return redirect(url_for('login'))
+    return render_template('login.html')
+
+@app.route('/welcome')
+def welcome():
+    if 'user' not in session:
+        flash("Please log in to access this page.", "error")
+        return redirect(url_for('login'))
+    return render_template('welcome.html')
+
+@app.route('/dashboard')
+def dashboard():
+    if 'user' not in session:
+        flash("Please log in to access this page.", "error")
+        return redirect(url_for('login'))
+    return render_template('dashboard.html')
+
+@app.route('/forgot', methods=['GET', 'POST'])
+def forgot():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        if not email:
+            flash("Email is required.", "error")
+            return redirect(url_for('forgot'))
+        try:
+            user = users_collection.find_one({"email": email})
+            if user:
+                session['reset_email'] = email
+                flash("Password reset instructions would be sent to your email.", "success")
+                return redirect(url_for('reset'))
+            else:
+                flash("Email not found.", "error")
+                return redirect(url_for('forgot'))
+        except Exception as e:
+            flash("An error occurred. Please try again.", "error")
+            return redirect(url_for('forgot'))
+    return render_template('forgot-password.html')
+
+@app.route('/reset', methods=['GET', 'POST'])
+def reset():
+    if 'reset_email' not in session:
+        flash("Unauthorized access.", "error")
+        return redirect(url_for('forgot'))
+    if request.method == 'POST':
+        new_password = request.form.get('new_password')
+        if not new_password:
+            flash("New password is required.", "error")
+            return redirect(url_for('reset'))
+        if len(new_password) < 6:
+            flash("Password must be at least 6 characters.", "error")
+            return redirect(url_for('reset'))
+        try:
+            hashed_password = generate_password_hash(new_password, method='sha256')
+            result = users_collection.update_one(
+                {"email": session['reset_email']},
+                {"$set": {"password": hashed_password}}
+            )
+            if result.modified_count == 0:
+                flash("Failed to update password. Please try again.", "error")
+                return redirect(url_for('reset'))
+            session.pop('reset_email', None)
+            flash("Password reset successful! Please log in.", "success")
+            return redirect(url_for('login'))
+        except Exception as e:
+            flash("An error occurred. Please try again.", "error")
+            return redirect(url_for('reset'))
+    return render_template('reset.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    session.pop('user_id', None)
+    session.pop('reset_email', None)
+    flash("You have been logged out.", "success")
+    return redirect(url_for('landing'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
