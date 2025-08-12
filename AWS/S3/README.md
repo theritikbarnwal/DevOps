@@ -1,5 +1,3 @@
-Of course. A good README file is essential for any project. Here is a well-structured README tailored to your project's current state and future goals. You can copy and paste this directly into a new file named `README.md` in your project's root directory.
-
 ***
 
 # R3cloud - A Personal Cloud Storage Platform
